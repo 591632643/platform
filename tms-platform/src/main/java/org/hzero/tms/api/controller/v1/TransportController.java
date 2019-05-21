@@ -40,7 +40,7 @@ public class TransportController extends BaseController {
     private LovAdapter lov;
 
     @ApiOperation(value = "运输管理列表")
-    @Permission(level = ResourceLevel.ORGANIZATION)
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @GetMapping
     public ResponseEntity<Page<Transport>> list(Transport transport, @ApiIgnore @SortDefault(value = Transport.FIELD_ID,
             direction = Sort.Direction.DESC) PageRequest pageRequest,
@@ -50,7 +50,7 @@ public class TransportController extends BaseController {
     }
 
     @ApiOperation(value = "运输管理明细")
-    @Permission(level = ResourceLevel.ORGANIZATION)
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @GetMapping("/{id}")
     public ResponseEntity<Transport> detail(@PathVariable Long id,
                                             @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
@@ -59,7 +59,7 @@ public class TransportController extends BaseController {
     }
 
     @ApiOperation(value = "创建运输管理")
-    @Permission(level = ResourceLevel.ORGANIZATION)
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @PostMapping
     public ResponseEntity<Transport> create(@RequestBody Transport transport,
                                             @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
@@ -69,7 +69,7 @@ public class TransportController extends BaseController {
     }
 
     @ApiOperation(value = "修改运输管理")
-    @Permission(level = ResourceLevel.ORGANIZATION)
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @PutMapping
     public ResponseEntity<Transport> update(@RequestBody Transport transport,
                                             @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
@@ -79,7 +79,7 @@ public class TransportController extends BaseController {
     }
 
     @ApiOperation(value = "删除运输管理")
-    @Permission(level = ResourceLevel.ORGANIZATION)
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @DeleteMapping
     public ResponseEntity<?> remove(@RequestBody Transport transport,
                                     @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
@@ -89,8 +89,8 @@ public class TransportController extends BaseController {
     }
 
     @ApiOperation(value = "获取独立值集")
-    @Permission(level = ResourceLevel.ORGANIZATION)
-    @RequestMapping("/queryLovValue")
+    @Permission(level = ResourceLevel.SITE, permissionPublic = true)
+    @GetMapping("/queryLovValue")
     public ResponseEntity<Page<LovValueDTO>> queryLovValue(@PathVariable String lovValue,
                                             @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
         List<LovValueDTO> lovList =  lov.queryLovValue(lovValue, organizationId);
