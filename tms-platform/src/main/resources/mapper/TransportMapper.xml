@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.hzero.tms.infra.mapper.TransportMapper">
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap id="BaseResultMap" type="org.hzero.tms.domain.entity.Transport">
+        <result column="id" property="id" jdbcType="DECIMAL"/>
+        <result column="transport_code" property="transportCode" jdbcType="VARCHAR"/>
+        <result column="transport_type" property="transportType" jdbcType="VARCHAR"/>
+        <result column="order_id" property="orderId" jdbcType="DECIMAL"/>
+        <result column="order_code" property="orderCode" jdbcType="VARCHAR"/>
+        <result column="contract_sign_date" property="contractSignDate" jdbcType="DATE"/>
+        <result column="company_id" property="companyId" jdbcType="DECIMAL"/>
+        <result column="transport_status" property="transportStatus" jdbcType="VARCHAR"/>
+        <result column="recepit_status" property="recepitStatus" jdbcType="VARCHAR"/>
+        <result column="goods_type" property="goodsType" jdbcType="VARCHAR"/>
+        <result column="issue_type" property="issueType" jdbcType="VARCHAR"/>
+        <result column="goods_weight" property="goodsWeight" jdbcType="DECIMAL"/>
+        <result column="out_by" property="outBy" jdbcType="DECIMAL"/>
+        <result column="out_by_name" property="outByName" jdbcType="VARCHAR"/>
+        <result column="out_mobile" property="outMobile" jdbcType="VARCHAR"/>
+        <result column="out_country_id" property="outCountryId" jdbcType="DECIMAL"/>
+        <result column="out_province_id" property="outProvinceId" jdbcType="DECIMAL"/>
+        <result column="out_city_id" property="outCityId" jdbcType="DECIMAL"/>
+        <result column="out_district_id" property="outDistrictId" jdbcType="DECIMAL"/>
+        <result column="out_address" property="outAddress" jdbcType="VARCHAR"/>
+        <result column="receive_by" property="receiveBy" jdbcType="DECIMAL"/>
+        <result column="receive_by_name" property="receiveByName" jdbcType="VARCHAR"/>
+        <result column="receive_country_id" property="receiveCountryId" jdbcType="DECIMAL"/>
+        <result column="receive_province_id" property="receiveProvinceId" jdbcType="DECIMAL"/>
+        <result column="receive_city_id" property="receiveCityId" jdbcType="DECIMAL"/>
+        <result column="receive_district_id" property="receiveDistrictId" jdbcType="DECIMAL"/>
+        <result column="receive_by_address" property="receiveByAddress" jdbcType="VARCHAR"/>
+        <result column="other_serve" property="otherServe" jdbcType="VARCHAR"/>
+        <result column="transport_cost" property="transportCost" jdbcType="VARCHAR"/>
+        <result column="vendor_name" property="vendorName" jdbcType="VARCHAR"/>
+        <result column="vendor_mobile" property="vendorMobile" jdbcType="VARCHAR"/>
+        <result column="reach_load_date" property="reachLoadDate" jdbcType="DATE"/>
+        <result column="load_date" property="loadDate" jdbcType="DATE"/>
+        <result column="send_date" property="sendDate" jdbcType="DATE"/>
+        <result column="reach_unload_date" property="reachUnloadDate" jdbcType="DATE"/>
+        <result column="unload_date" property="unloadDate" jdbcType="DATE"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="tenant_id" property="tenantId" jdbcType="DECIMAL"/>
+        <result column="object_version_number" property="objectVersionNumber" jdbcType="DECIMAL"/>
+        <result column="creation_date" property="creationDate" jdbcType="DATE"/>
+        <result column="created_by" property="createdBy" jdbcType="DECIMAL"/>
+        <result column="last_updated_by" property="lastUpdatedBy" jdbcType="DECIMAL"/>
+        <result column="last_update_date" property="lastUpdateDate" jdbcType="DATE"/>
+        <result column="PROGRAM_APPLICATION_ID" property="programApplicationId" jdbcType="DECIMAL"/>
+        <result column="PROGRAM_ID" property="programId" jdbcType="DECIMAL"/>
+        <result column="PROGRAM_UPDATE_DATE" property="programUpdateDate" jdbcType="DATE"/>
+        <result column="REQUEST_ID" property="requestId" jdbcType="DECIMAL"/>
+        <result column="ATTRIBUTE_CATEGORY" property="attributeCategory" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE1" property="attribute1" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE2" property="attribute2" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE3" property="attribute3" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE4" property="attribute4" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE5" property="attribute5" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE6" property="attribute6" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE7" property="attribute7" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE8" property="attribute8" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE9" property="attribute9" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE10" property="attribute10" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE11" property="attribute11" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE12" property="attribute12" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE13" property="attribute13" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE14" property="attribute14" jdbcType="VARCHAR"/>
+        <result column="ATTRIBUTE15" property="attribute15" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryTransportData" parameterType="org.hzero.tms.domain.entity.Transport" resultMap="BaseResultMap">
+        select (1+1) transport_code from dual;
+    </select>
+</mapper>
