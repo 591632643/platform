@@ -95,6 +95,7 @@ public class TransportController extends BaseController {
                                             @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
         List<LovValueDTO> lovList =  lov.queryLovValue(lovValue, organizationId);
         Page<LovValueDTO> lovPage = new Page<LovValueDTO>();
+        lovPage.setContent(lovList);
         return Results.success(lovPage);
     }
 
