@@ -107,7 +107,7 @@ public class Transport extends AuditDomain {
     private String transportType;
     @ApiModelProperty(value = "订单id",required = true)
     @NotNull
-    private Long orderId;
+    private Long orderDetailId;
     @ApiModelProperty(value = "订单CODE",required = true)
     @NotBlank
     private String orderCode;
@@ -272,12 +272,12 @@ public class Transport extends AuditDomain {
     /**
      * @return 订单id
      */
-    public Long getOrderId() {
-        return orderId;
+    public Long getOrderDetailId() {
+        return orderDetailId;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrderDetailId(Long orderId) {
+        this.orderDetailId = orderDetailId;
     }
     /**
      * @return 订单CODE

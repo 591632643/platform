@@ -6,7 +6,7 @@
         <result column="id" property="id" jdbcType="DECIMAL"/>
         <result column="transport_code" property="transportCode" jdbcType="VARCHAR"/>
         <result column="transport_type" property="transportType" jdbcType="VARCHAR"/>
-        <result column="order_id" property="orderId" jdbcType="DECIMAL"/>
+        <result column="order_detail_id" property="orderDetailId" jdbcType="DECIMAL"/>
         <result column="order_code" property="orderCode" jdbcType="VARCHAR"/>
         <result column="contract_sign_date" property="contractSignDate" jdbcType="DATE"/>
         <result column="company_id" property="companyId" jdbcType="DECIMAL"/>
