@@ -8,7 +8,6 @@ import io.choerodon.mybatis.pagehelper.domain.Sort;
 import io.choerodon.swagger.annotation.Permission;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.hzero.boot.platform.lov.adapter.LovAdapter;
 import org.hzero.boot.platform.lov.dto.LovValueDTO;
 import org.hzero.core.base.BaseController;
@@ -30,7 +29,7 @@ import java.util.List;
  */
 @Api(tags = SwaggerTags.TRANSPORTS)
 @RestController("transportController.v1")
-@RequestMapping("/v1/{organizationId}/transports")
+@RequestMapping("/v1/transports")
 public class TransportController extends BaseController {
 
     @Autowired
@@ -43,8 +42,7 @@ public class TransportController extends BaseController {
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @GetMapping
     public ResponseEntity<Page<Transport>> list(Transport transport, @ApiIgnore @SortDefault(value = Transport.FIELD_ID,
-            direction = Sort.Direction.DESC) PageRequest pageRequest,
-                                                @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) { 
+            direction = Sort.Direction.DESC) PageRequest pageRequest) { 
         Page<Transport> list = transportRepository.pageAndSort(pageRequest, transport);
         return Results.success(list);
     }
@@ -52,8 +50,7 @@ public class TransportController extends BaseController {
     @ApiOperation(value = "运输管理明细")
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @GetMapping("/{id}")
-    public ResponseEntity<Transport> detail(@PathVariable Long id,
-                                            @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
+    public ResponseEntity<Transport> detail(@PathVariable Long id) {
         Transport transport = transportRepository.selectByPrimaryKey(id);
         return Results.success(transport);
     }
@@ -61,8 +58,7 @@ public class TransportController extends BaseController {
     @ApiOperation(value = "创建运输管理")
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @PostMapping
-    public ResponseEntity<Transport> create(@RequestBody Transport transport,
-                                            @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
+    public ResponseEntity<Transport> create(@RequestBody Transport transport) {
         validObject(transport);
         transportRepository.insertSelective(transport);
         return Results.success(transport);
@@ -71,8 +67,7 @@ public class TransportController extends BaseController {
     @ApiOperation(value = "修改运输管理")
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @PutMapping
-    public ResponseEntity<Transport> update(@RequestBody Transport transport,
-                                            @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
+    public ResponseEntity<Transport> update(@RequestBody Transport transport) {
         SecurityTokenHelper.validToken(transport);
         transportRepository.updateByPrimaryKeySelective(transport);
         return Results.success(transport);
@@ -81,8 +76,7 @@ public class TransportController extends BaseController {
     @ApiOperation(value = "删除运输管理")
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @DeleteMapping
-    public ResponseEntity<?> remove(@RequestBody Transport transport,
-                                    @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
+    public ResponseEntity<?> remove(@RequestBody Transport transport) {
         SecurityTokenHelper.validToken(transport);
         transportRepository.deleteByPrimaryKey(transport);
         return Results.success();
@@ -91,9 +85,8 @@ public class TransportController extends BaseController {
     @ApiOperation(value = "获取独立值集")
     @Permission(level = ResourceLevel.SITE, permissionPublic = true)
     @GetMapping("/queryLovValue")
-    public ResponseEntity<Page<LovValueDTO>> queryLovValue(@PathVariable String lovValue,
-                                            @ApiParam(value = "租户ID", required = true) @PathVariable Long organizationId) {
-        List<LovValueDTO> lovList =  lov.queryLovValue(lovValue, organizationId);
+    public ResponseEntity<Page<LovValueDTO>> queryLovValue(@PathVariable String lovValue) {
+        List<LovValueDTO> lovList =  lov.queryLovValue(lovValue, 1L);
         Page<LovValueDTO> lovPage = new Page<LovValueDTO>();
         lovPage.setContent(lovList);
         return Results.success(lovPage);
