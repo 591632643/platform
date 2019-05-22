@@ -8,7 +8,7 @@ mvn clean package
 echo ">>> cd target"
 cd target
 
-JAR=platform.jar
+JAR=tms-platform.jar
 MPORT=8088
 
 echo ">>> kill -9 $(jps -ml | grep $JAR | awk '{print $1}')"
